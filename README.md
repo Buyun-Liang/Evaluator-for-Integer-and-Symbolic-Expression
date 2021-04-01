@@ -12,7 +12,7 @@ The idea in this program is to adopt a distributed memory viewpoint of the k-mea
 The main goal of projects includes:
 1) Developing evaluators in SML, Scheme and C to evaluate integer expressions built from integer literals, variables (represented as strings), negation, addition, subtraction, and multiplication.
 
-2) Implemented a mini-Prolog evaluator to handle the encoding of S-expressions from Scheme
+2) Implementing a mini-Prolog evaluator to handle the encoding of S-expressions from Scheme
 
 ## File Description
 
