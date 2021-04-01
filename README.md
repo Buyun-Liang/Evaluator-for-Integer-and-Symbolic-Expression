@@ -2,8 +2,7 @@
 The idea in this program is to adopt a distributed memory viewpoint of the k-means algorithm https://en.wikipedia.org/wiki/K-means_clustering.
 
 ## Table of contents
-* [General Information](#general-information)
-* [Screenshots](#screenshots)
+* [General Information](#general-information) 
 * [File Description](#file-description)
 * [Usages of Integer Expression Evaluator](#usages-of-integer-expression-evaluator)
 * [Usages of Symbolic Expression Evaluator](#usages-of-symbolic-expression-evaluator)
@@ -15,20 +14,16 @@ K-means clustering is an important unsupervised learning algorithm. However, the
 The algorithm has two important parts in each iteration after initialization: 1). Each process will perform local operations to obtain the the counter of clusters and summation of points of different clusters. MPI_All_Reduce was used to allow the communication between processors and add up the result. 2). Reset centroids using the result from 1) in root processor, and broadcast the new centroids to every processors.
 
 ## File Description
-main.c is the main driver. 
 
-The datasets used are US pollution data from 2016, which is available on umn cselab machine. Here, I only upload the very small datesets pollution_small.csv for testing. 
 
-The auxil1.c contains a set of auxilliary functions, which includes the parallel dirstirbuted version of k-means algorithm. 
+The SML program expr.sml defines a type expr to represent integer expressions. 
 
-The python script solver.py is used to check the accuracy of the program.
+The Scheme program expr.scm defines functions expr-int, expr-var, expr-neg, expr-add, expr-sub, expr-mul, and expr-eval in a similar way. 
 
-## Screenshots
-This is a demo running on phiXX.cselabs.umn.edu clusters.
-```bash
-mpirun -np 8 -hostfile hostfile -map-by node  main.ex
-```
-![Demo](./img/demo.png)
+The C program expr.c uses union types and pointers to define a structure type struct expr to represent integer expressions.
+
+main.c is the main driver for the c program. 
+ 
 
 ## Usages of Integer Expression Evaluator
 
