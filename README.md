@@ -5,7 +5,8 @@ The idea in this program is to adopt a distributed memory viewpoint of the k-mea
 * [General Information](#general-information)
 * [Screenshots](#screenshots)
 * [File Description](#file-description)
-* [Usages](#usages)
+* [Usages of Integer Expression Evaluator](#usages-of-integer-expression-evaluator)
+* [Usages of Symbolic Expression Evaluator](#usages-of-symbolic-expression-evaluator)
 * [Contact](#contact)
 
 ## General Information
@@ -29,7 +30,8 @@ mpirun -np 8 -hostfile hostfile -map-by node  main.ex
 ```
 ![Demo](./img/demo.png)
 
-## Usages
+## Usages of Integer Expression Evaluator
+
 Standard ML:
 ```bash
 rlwrap sml expr.sml
@@ -78,6 +80,8 @@ val it = ~60 : int
 (expr-eval (lambda (v) (cond ((string=? v "x") 3) ((string=? v "y") 4) (#t 5))) (expr-mul (expr-var "x") (expr-neg (expr-mul (expr-var "y") (expr-var "z")))))
 ;Value: -60
 ```
+
+## Usages of Symbolic Expression Evaluator
 
 ## Contact
 Created by Buyun Liang [liang664@umn.edu] (https://www.linkedin.com/in/buyun-liang/) - feel free to contact me if you have any questions!
