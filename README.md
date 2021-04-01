@@ -1,18 +1,15 @@
 # Evaluator-for-Integer-and-Symbolic-Expression
-The idea in this program is to adopt a distributed memory viewpoint of the k-means algorithm https://en.wikipedia.org/wiki/K-means_clustering.
+The main goal of this project includes:
+1) Developing evaluators in SML, Scheme and C to evaluate integer expressions built from integer literals, variables (represented as strings), negation, addition, subtraction, and multiplication.
+
+2) Implementing a mini-Prolog evaluator to handle the encoding of S-expressions from Scheme
 
 ## Table of contents
-* [General Information](#general-information) 
 * [File Description](#file-description)
 * [Usages of Integer Expression Evaluator](#usages-of-integer-expression-evaluator)
 * [Usages of Symbolic Expression Evaluator](#usages-of-symbolic-expression-evaluator)
 * [Contact](#contact)
 
-## General Information
-The main goal of projects includes:
-1) Developing evaluators in SML, Scheme and C to evaluate integer expressions built from integer literals, variables (represented as strings), negation, addition, subtraction, and multiplication.
-
-2) Implementing a mini-Prolog evaluator to handle the encoding of S-expressions from Scheme
 
 ## File Description
 
