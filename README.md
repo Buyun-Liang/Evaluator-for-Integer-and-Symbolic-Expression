@@ -5,7 +5,7 @@ The idea in this program is to adopt a distributed memory viewpoint of the k-mea
 * [General Information](#general-information)
 * [Screenshots](#screenshots)
 * [File Description](#file-description)
-* [Code Examples](#code-examples)
+* [Usages](#usages)
 * [Contact](#contact)
 
 ## General Information
@@ -29,28 +29,29 @@ mpirun -np 8 -hostfile hostfile -map-by node  main.ex
 ```
 ![Demo](./img/demo.png)
 
-## Code Examples
-To build the executable program main.ex, run:
+## Usages
+###### Standard ML
 ```bash
-make
+rlwrap sml expr.sml
 ```
-The program could be run on the phiXX.cselabs.umn.edu cluster by running:
-```bash
-mpirun [ -np X ] [ --hostfile <filename> ] <program>
-```
-where X is the number of processors, and -hostfile is used for specifying host nodes. For example:
-```bash
-mpirun -np 16 -hostfile hostfile -map-by node  main.ex
-```
-where X = 16, <filename> is hosts, and -map-by node will load balance the processes across the available nodes, numbering each process in a round-robin fashion.
 
-To verify the correctness of the program, run:
+To evaluate the expression (expr_add (expr_var "x") (expr_int 6)), where expr_var x is assigned with the number 5:
 ```bash
-python3 solver.py
+- expr_eval (fn _ => 5) (expr_add (expr_var "x") (expr_int 6));
+val it = 11 : int
 ```
-The output should be
+
+To evaluate the expression (expr_sub (expr_var "y") (expr_neg (expr_int 1))), where expr_var is assigned with the function if v = "x" then 3 else 5:
 ```bash
-number of correct labels =  1021 / 1021
+- expr_eval (fn v => if v = "x" then 3 else 5) (expr_sub (expr_var "y") (expr_neg (expr_int 1)));
+val it = 6 : int
 ```
+To evaluate the expression (expr_mul (expr_var "x") (expr_neg (expr_mul (expr_var "y") (expr_var "z")))), where expr_var is assigned with the the function case v of "x" => 3 | "y" => 4 | _ => 5:
+
+```bash
+- expr_eval (fn v => case v of "x" => 3 | "y" => 4 | _ => 5)  (expr_mul (expr_var "x") (expr_neg (expr_mul (expr_var "y") (expr_var "z"))));
+val it = ~60 : int
+```
+
 ## Contact
 Created by Buyun Liang [liang664@umn.edu] (https://www.linkedin.com/in/buyun-liang/) - feel free to contact me if you have any questions!
