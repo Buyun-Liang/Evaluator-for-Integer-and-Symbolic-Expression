@@ -30,27 +30,53 @@ mpirun -np 8 -hostfile hostfile -map-by node  main.ex
 ![Demo](./img/demo.png)
 
 ## Usages
-###### Standard ML
+Standard ML:
 ```bash
 rlwrap sml expr.sml
 ```
+Scheme:
+```bash
+module load scheme/mit-gnu
+rlwrap mit-scheme --load  expr.scm
+```
 
-To evaluate the expression (expr_add (expr_var "x") (expr_int 6)), where expr_var x is assigned with the number 5:
+To evaluate the expression (expr_add (expr_var "x") (expr_int 6)), where expr_var is assigned with the number 5:
+
+1).Standard ML:
 ```bash
 - expr_eval (fn _ => 5) (expr_add (expr_var "x") (expr_int 6));
 val it = 11 : int
 ```
+2).Scheme:
+```bash
+(expr-eval (lambda (v) 5) (expr-add (expr-var "x") (expr-int 6)))
+;Value: 11
+```
 
 To evaluate the expression (expr_sub (expr_var "y") (expr_neg (expr_int 1))), where expr_var is assigned with the function if v = "x" then 3 else 5:
+
+1).Standard ML:
 ```bash
 - expr_eval (fn v => if v = "x" then 3 else 5) (expr_sub (expr_var "y") (expr_neg (expr_int 1)));
 val it = 6 : int
 ```
+2).Scheme:
+```bash
+(expr-eval (lambda (v) (if (string=? v "x") 3 5)) (expr-sub (expr-var "y") (expr-neg (expr-int 1))))
+;Value: 6
+```
+
 To evaluate the expression (expr_mul (expr_var "x") (expr_neg (expr_mul (expr_var "y") (expr_var "z")))), where expr_var is assigned with the the function case v of "x" => 3 | "y" => 4 | _ => 5:
 
+1).Standard ML:
 ```bash
 - expr_eval (fn v => case v of "x" => 3 | "y" => 4 | _ => 5)  (expr_mul (expr_var "x") (expr_neg (expr_mul (expr_var "y") (expr_var "z"))));
 val it = ~60 : int
+```
+2).Scheme:
+```bash
+(expr-eval (lambda (v) (cond ((string=? v "x") 3) ((string=? v "y") 4) (#t 5))) (expr-mul (expr-var "x") (expr-neg (expr-mul (expr-var "y") (expr-var "z")))))
+;Value: -60
 ```
 
 ## Contact
