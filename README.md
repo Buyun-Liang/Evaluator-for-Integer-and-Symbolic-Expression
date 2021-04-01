@@ -61,8 +61,6 @@ val it = 6 : int
 (expr-eval (lambda (v) (if (string=? v "x") 3 5)) (expr-sub (expr-var "y") (expr-neg (expr-int 1))))
 ;Value: 6
 ```
- 
-
 
 To evaluate the expression (expr_mul (expr_var "x") (expr_neg (expr_mul (expr_var "y") (expr_var "z")))), where expr_var is assigned with the the function case v of "x" => 3 | "y" => 4 | _ => 5:
 
@@ -87,6 +85,16 @@ gcc main.c
 ```
 
 ## Usages of Symbolic Expression Evaluator
+
+Prolog:
+```bash
+rlwrap swipl pexp.pl
+```
+The S-expression (car (cdr (cdr (quote (x y z))))) is encoded as [car,[cdr,[cdr,[quote,[x,y,z]]]]]. To evaluate it, run
+```bash
+eval([car,[cdr,[cdr,[quote,[x,y,z]]]]],z).
+true .
+```
 
 ## Contact
 Created by Buyun Liang [liang664@umn.edu] (https://www.linkedin.com/in/buyun-liang/) - feel free to contact me if you have any questions!
