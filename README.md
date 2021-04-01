@@ -42,6 +42,7 @@ module load scheme/mit-gnu
 rlwrap mit-scheme --load  expr.scm
 ```
 
+
 To evaluate the expression (expr_add (expr_var "x") (expr_int 6)), where expr_var is assigned with the number 5:
 
 1).Standard ML:
@@ -67,6 +68,8 @@ val it = 6 : int
 (expr-eval (lambda (v) (if (string=? v "x") 3 5)) (expr-sub (expr-var "y") (expr-neg (expr-int 1))))
 ;Value: 6
 ```
+ 
+
 
 To evaluate the expression (expr_mul (expr_var "x") (expr_neg (expr_mul (expr_var "y") (expr_var "z")))), where expr_var is assigned with the the function case v of "x" => 3 | "y" => 4 | _ => 5:
 
@@ -79,6 +82,15 @@ val it = ~60 : int
 ```bash
 (expr-eval (lambda (v) (cond ((string=? v "x") 3) ((string=? v "y") 4) (#t 5))) (expr-mul (expr-var "x") (expr-neg (expr-mul (expr-var "y") (expr-var "z")))))
 ;Value: -60
+```
+
+Results of C: 
+```bash
+gcc main.c 
+./a.out 
+11
+6
+-60
 ```
 
 ## Usages of Symbolic Expression Evaluator
