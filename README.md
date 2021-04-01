@@ -21,6 +21,8 @@ The Scheme program expr.scm defines functions expr-int, expr-var, expr-neg, expr
 The C program expr.c uses union types and pointers to define a structure type struct expr to represent integer expressions.
 
 main.c is the main driver for the c program. 
+
+The Prolog program pexp.pl could evaluate the encoding of S-expressions.
  
 
 ## Usages of Integer Expression Evaluator
